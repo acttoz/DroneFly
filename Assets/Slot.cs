@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class Slot : MonoBehaviour {
     public int slotId;
     private Button btn;
+    public Sprite cardColor;
+    public Sprite emptyColor;
 	// Use this for initialization
 	void Start () {
         btn = GetComponent<Button>();
@@ -26,15 +28,18 @@ public class Slot : MonoBehaviour {
         int cardId= Constant.selectedCardIds[slotId];
         string slotText = Constant.cardTexts[cardId];
         gameObject.transform.GetChild(0).GetComponent<UnityEngine.UI.Text>().text = slotText;
+        GetComponent<Image>().sprite = cardColor;
+
     }
     void onClick() {
-        Manager.o.GetComponent<Manager>().resetSlots();
+        Manager.mgr.resetSlots();
         if (Constant.selectedCardIds.Count > slotId)
             Constant.selectedCardIds.RemoveAt(slotId);
     }
 
     public void reMoveCard()
     {
+        GetComponent<Image>().sprite = emptyColor;
         gameObject.transform.GetChild(0).GetComponent<UnityEngine.UI.Text>().text = "";
     }
 }

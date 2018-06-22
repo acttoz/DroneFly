@@ -209,8 +209,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 338.99994, y: -287}
-  m_SizeDelta: {x: 654.9, y: 200.6}
+  m_AnchoredPosition: {x: 295.1001, y: -287}
+  m_SizeDelta: {x: 540.8, y: 200.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &113627392
 MonoBehaviour:
@@ -544,8 +544,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -372, y: 0}
-  m_SizeDelta: {x: 654.9, y: 200.6}
+  m_AnchoredPosition: {x: -292, y: 0}
+  m_SizeDelta: {x: 540.8, y: 200.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &430266631
 MonoBehaviour:
@@ -867,8 +867,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 440.2, y: -153}
-  m_SizeDelta: {x: -1056.3, y: -457.3}
+  m_AnchoredPosition: {x: 565.8, y: -153}
+  m_SizeDelta: {x: -1307.4, y: -457.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &784427942
 MonoBehaviour:
@@ -1179,8 +1179,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 338.99994, y: 304}
-  m_SizeDelta: {x: 654.9, y: 200.6}
+  m_AnchoredPosition: {x: 295.1001, y: 304}
+  m_SizeDelta: {x: 540.8, y: 200.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1178349082
 MonoBehaviour:
@@ -1296,7 +1296,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1350943277}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f539f7927ef9b7e4d9f355adf1a4f377, type: 3}
   m_Name: 
@@ -1527,8 +1527,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -372, y: 304}
-  m_SizeDelta: {x: 654.9, y: 200.6}
+  m_AnchoredPosition: {x: -291.9999, y: 304}
+  m_SizeDelta: {x: 540.8, y: 200.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1437614760
 MonoBehaviour:
@@ -1652,7 +1652,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1565a12dc402e499d1fc81e0c5e502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  propellerSpeed: 0
 --- !u!1 &1657577294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1687,8 +1686,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -372, y: -287}
-  m_SizeDelta: {x: 654.9, y: 200.6}
+  m_AnchoredPosition: {x: -291.9999, y: -287}
+  m_SizeDelta: {x: 540.8, y: 200.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1657577296
 MonoBehaviour:
@@ -1798,8 +1797,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 339, y: 0}
-  m_SizeDelta: {x: 654.9, y: 200.6}
+  m_AnchoredPosition: {x: 295.1001, y: 0}
+  m_SizeDelta: {x: 540.8, y: 200.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1660023576
 MonoBehaviour:
@@ -1989,7 +1988,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1727710419}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f539f7927ef9b7e4d9f355adf1a4f377, type: 3}
   m_Name: 
@@ -2170,6 +2169,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   drone: {fileID: 1548665275}
+  playBtn: {fileID: 0}
+  currentSlotColor: {r: 0, g: 0, b: 0, a: 0}
+  LevelNum: 0
 --- !u!4 &1878161366
 Transform:
   m_ObjectHideFlags: 0
@@ -2223,7 +2225,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1978211376}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f539f7927ef9b7e4d9f355adf1a4f377, type: 3}
   m_Name: 
@@ -2312,7 +2314,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2005886772}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f539f7927ef9b7e4d9f355adf1a4f377, type: 3}
   m_Name: 

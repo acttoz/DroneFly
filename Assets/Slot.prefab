@@ -59,6 +59,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotId: 0
+  cardColor: {fileID: 21300000, guid: 2bf7725e2802a6d45ad9bd6b3e46bd86, type: 3}
+  emptyColor: {fileID: 21300000, guid: 3b38514a658e91b43bbafa1fbf5b7e50, type: 3}
 --- !u!114 &114412219085467614
 MonoBehaviour:
   m_ObjectHideFlags: 1

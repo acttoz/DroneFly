@@ -2,34 +2,86 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DroneMove : MonoBehaviour {
+/// <summary>
+///  cardUp=0;
+//cardDown = 1;
+//cardFoward = 2;
+//cardLeft = 3;
+//cardRight = 4;
+//cardRepeat = 5;
+/// </summary>
 
-	// Use this for initialization
-	void Start ()
+public class DroneMove : MonoBehaviour
+{
+    float movingTime = 1.0f;
+    private Vector3 startingPos;
+    private Quaternion startingRot;
+    // Use this for initialization
+    void Start()
+    {
+        startingPos = transform.localPosition;
+        startingRot = transform.localRotation;
+    }
+    public void play()
     {
         StartCoroutine(move());
     }
-	
-	// Update is called once per frame
-	void Update () {
-        
+
+    public void resetDrone() {
+        iTween.Stop();
+        transform.localPosition = startingPos;
+        transform.localRotation= startingRot;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
     }
 
     // every 2 seconds perform the print()
     private IEnumerator move()
     {
-        while (true)
+        for (int i = 0; i < Constant.selectedCardIds.Count; i++)
         {
-            yield return new WaitForSeconds(1.5f);
-            iTween.MoveBy(gameObject, iTween.Hash(
- "x", 4,
- "time", 1.2f
-));
-            yield return new WaitForSeconds(1.5f);
-            iTween.MoveBy(gameObject, iTween.Hash(
-        "z", 4,
-        "time", 1.2f
-    ));
+            if (!Manager.isPlaying)
+                break;
+            Manager.mgr.currentSlot(i);
+            controlDrone(Constant.selectedCardIds[i]);
+            yield return new WaitForSeconds(1.2f);
         }
+
+        Manager.mgr.checkMission();
+    }
+
+    private void controlDrone(int cardId)
+    {
+        switch (cardId)
+        {
+            case 0:
+                iTween.MoveBy(gameObject, iTween.Hash("y", 4, "time", movingTime));
+                break;
+            case 1:
+                iTween.MoveBy(gameObject, iTween.Hash("y", -4, "time", movingTime));
+                break;
+            case 2:
+                iTween.MoveBy(gameObject, iTween.Hash("x", 4, "time", movingTime));
+                break;
+            case 3:
+                iTween.RotateBy(gameObject, iTween.Hash("y", -0.25, "time", movingTime));
+                break;
+            case 4:
+                iTween.RotateBy(gameObject, iTween.Hash("y", 0.25, "time", movingTime));
+                break;
+            case 5:
+                break;
+
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "enemy")
+            Manager.mgr.reset();
     }
 }

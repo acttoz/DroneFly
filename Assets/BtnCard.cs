@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class BtnCard : MonoBehaviour {
     public int idCard;
-    public Button btn;
+    Button btn;
 	// Use this for initialization
 	void Start () {
         btn = GetComponent<Button>();
