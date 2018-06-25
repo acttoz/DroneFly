@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
@@ -9,6 +10,8 @@ public class Manager : MonoBehaviour
     public GameObject drone;
     public GameObject playBtn;
     public GameObject goalText;
+    public GameObject resultGoalText;
+    public GameObject resultGoalPanel;
     public static GameObject o;
     public static Manager mgr;
     public Color currentSlotColor;
@@ -18,6 +21,12 @@ public class Manager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
+        int defaultValue = EventSystem.current.pixelDragThreshold;
+        EventSystem.current.pixelDragThreshold =
+                Mathf.Max(
+                     defaultValue,
+                     (int)(defaultValue * Screen.dpi / 160f));
         reset();
         o = this.gameObject;
         mgr = GetComponent<Manager>();
@@ -56,7 +65,9 @@ public class Manager : MonoBehaviour
     }
     public void reset()
     {
+        resultGoalPanel.SetActive(false);
         goalText.GetComponent<Text>().text = Constant.goals[missionNum];
+        resultGoalText.GetComponent<Text>().text = Constant.goals[missionNum];
         Manager.isPlaying = false;
         playBtn.GetComponent<PlayBtn>().setPlayBtn();
         Constant.selectedCardIds.Clear();
@@ -80,12 +91,12 @@ public class Manager : MonoBehaviour
 
     private void goalFail()
     {
-        Debug.Log("fail");
-
+        reset();
     }
 
     private void goalSuccess()
     {
-        Debug.Log("success");
+        isPlaying = false;
+        resultGoalPanel.SetActive(true);
     }
 }

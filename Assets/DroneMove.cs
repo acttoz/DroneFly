@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -52,6 +53,23 @@ public class DroneMove : MonoBehaviour
         }
 
         Manager.mgr.checkMission();
+    }
+
+    public void moveTutorial() {
+        StartCoroutine(moveTu());
+    }
+
+    private IEnumerator moveTu()
+    {
+        for (int i = 0; i < Constant.selectedCardIds.Count; i++)
+        {
+            yield return new WaitForSeconds(1.2f);
+            controlDrone(Constant.selectedCardIds[i]);
+            yield return new WaitForSeconds(1.2f);
+        }
+
+        GameObject.Find("Canvas (1)").SendMessage("tutorial",2);
+
     }
 
     private void controlDrone(int cardId)
