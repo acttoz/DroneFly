@@ -18,10 +18,21 @@ public class BtnCard : MonoBehaviour
 
     private void onClick()
     {
-
         if (!Manager.isPlaying)
+        {
             Constant.selectedCardIds.Add(idCard);
-        
+            try
+            {
+                Constant.repeatList.RemoveAt(Constant.currentSlotId);
+            }
+            catch (System.Exception E)
+            {
+            }
+            Constant.repeatList.Insert(Constant.currentSlotId, Constant.repeatNum);
+            Constant.repeatNum = 1;
+            Constant.currentSlotId++;
+           
+        }
     }
 
     // Update is called once per frame

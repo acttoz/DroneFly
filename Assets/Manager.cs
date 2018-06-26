@@ -19,6 +19,7 @@ public class Manager : MonoBehaviour
     public static bool isPlaying = false;
     public int missionNum;
     public GameObject[] slots;
+    public GameObject[] missionMaps;
     // Use this for initialization
     void Start()
     {
@@ -42,6 +43,9 @@ public class Manager : MonoBehaviour
 
     public void resetSlots()
     {
+        Constant.selectedCardIds.Clear();
+        Constant.repeatList.Clear();
+        Constant.currentSlotId = 0;
         foreach (GameObject slot in slots)
         {
             slot.GetComponent<Slot>().reMoveCard();
@@ -66,19 +70,23 @@ public class Manager : MonoBehaviour
     }
     public void reset()
     {
-        try
+        foreach (GameObject slot in slots)
         {
-            resultGoalPanel.SetActive(false);
-            goalText.GetComponent<Text>().text = Constant.goals[missionNum];
-            resultGoalText.GetComponent<Text>().text = Constant.goals[missionNum];
-            Manager.isPlaying = false;
-            playBtn.GetComponent<PlayBtn>().setPlayBtn();
-            Constant.selectedCardIds.Clear();
-            //resetSlots();
-            drone.SendMessage("resetDrone");
-        } catch (Exception E) {
+            slot.GetComponent<Image>().color = new Color(1, 1, 1);
         }
-       
+        foreach (GameObject missionMap in missionMaps)
+        {
+            try { missionMap.SetActive(false); } catch (Exception E) { }
+        }
+        missionMaps[missionNum].SetActive(true);
+        resultGoalPanel.SetActive(false);
+        goalText.GetComponent<Text>().text = Constant.goals[missionNum];
+        resultGoalText.GetComponent<Text>().text = Constant.goals[missionNum];
+        Manager.isPlaying = false;
+        playBtn.GetComponent<PlayBtn>().setPlayBtn();
+        //Constant.selectedCardIds.Clear();
+        drone.SendMessage("resetDrone");
+
     }
 
     public void checkMission()
@@ -92,8 +100,9 @@ public class Manager : MonoBehaviour
                     else
                         goalFail();
                 break;
-            case 1:
-                        goalSuccess();
+
+            default:
+                goalSuccess();
                 break;
         }
     }
@@ -107,5 +116,6 @@ public class Manager : MonoBehaviour
     {
         isPlaying = false;
         resultGoalPanel.SetActive(true);
+        resetSlots();
     }
 }

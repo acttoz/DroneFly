@@ -28,10 +28,11 @@ public class DroneMove : MonoBehaviour
         StartCoroutine(move());
     }
 
-    public void resetDrone() {
+    public void resetDrone()
+    {
         iTween.Stop();
         transform.localPosition = startingPos;
-        transform.localRotation= startingRot;
+        transform.localRotation = startingRot;
     }
 
     // Update is called once per frame
@@ -48,14 +49,18 @@ public class DroneMove : MonoBehaviour
             if (!Manager.isPlaying)
                 break;
             Manager.mgr.currentSlot(i);
-            controlDrone(Constant.selectedCardIds[i]);
-            yield return new WaitForSeconds(1.2f);
+            for (int j = 0; j < Constant.repeatList[i]; j++)
+            {
+                controlDrone(Constant.selectedCardIds[i]);
+                yield return new WaitForSeconds(1.2f);
+            }
         }
-
-        Manager.mgr.checkMission();
+        if (Manager.mgr.missionNum == 0)
+            Manager.mgr.checkMission();
     }
 
-    public void moveTutorial() {
+    public void moveTutorial()
+    {
         StartCoroutine(moveTu());
     }
 
@@ -66,9 +71,7 @@ public class DroneMove : MonoBehaviour
             controlDrone(Constant.selectedCardIds[i]);
             yield return new WaitForSeconds(1.2f);
         }
-
-        GameObject.Find("Canvas (1)").SendMessage("tutorial",2);
-
+        GameObject.Find("Canvas (1)").SendMessage("tutorial", 2);
     }
 
     private void controlDrone(int cardId)
