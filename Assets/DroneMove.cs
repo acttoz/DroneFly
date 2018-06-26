@@ -63,7 +63,6 @@ public class DroneMove : MonoBehaviour
     {
         for (int i = 0; i < Constant.selectedCardIds.Count; i++)
         {
-            yield return new WaitForSeconds(1.2f);
             controlDrone(Constant.selectedCardIds[i]);
             yield return new WaitForSeconds(1.2f);
         }
@@ -101,5 +100,8 @@ public class DroneMove : MonoBehaviour
     {
         if (other.tag == "enemy")
             Manager.mgr.reset();
+
+        if (other.tag == "goal")
+            Manager.mgr.checkMission();
     }
 }

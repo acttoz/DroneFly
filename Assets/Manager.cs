@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
@@ -36,7 +37,7 @@ public class Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Escape)) { SceneManager.LoadScene(0); }
     }
 
     public void resetSlots()
@@ -65,14 +66,19 @@ public class Manager : MonoBehaviour
     }
     public void reset()
     {
-        resultGoalPanel.SetActive(false);
-        goalText.GetComponent<Text>().text = Constant.goals[missionNum];
-        resultGoalText.GetComponent<Text>().text = Constant.goals[missionNum];
-        Manager.isPlaying = false;
-        playBtn.GetComponent<PlayBtn>().setPlayBtn();
-        Constant.selectedCardIds.Clear();
-        resetSlots();
-        drone.SendMessage("resetDrone");
+        try
+        {
+            resultGoalPanel.SetActive(false);
+            goalText.GetComponent<Text>().text = Constant.goals[missionNum];
+            resultGoalText.GetComponent<Text>().text = Constant.goals[missionNum];
+            Manager.isPlaying = false;
+            playBtn.GetComponent<PlayBtn>().setPlayBtn();
+            Constant.selectedCardIds.Clear();
+            //resetSlots();
+            drone.SendMessage("resetDrone");
+        } catch (Exception E) {
+        }
+       
     }
 
     public void checkMission()
@@ -85,6 +91,9 @@ public class Manager : MonoBehaviour
                         goalSuccess();
                     else
                         goalFail();
+                break;
+            case 1:
+                        goalSuccess();
                 break;
         }
     }
