@@ -30,12 +30,15 @@ public class Tutorial : MonoBehaviour
                 {
                     case 1:
                         Constant.selectedCardIds.Add(2);
+                        Constant.currentSlotId++;
                         break;
                     case 2:
                         Constant.selectedCardIds.Add(2);
+                        Constant.currentSlotId++;
                         break;
                     case 3:
                         Constant.selectedCardIds.Add(2);
+                        Constant.currentSlotId++;
                         obj1.SetActive(false);
                         obj2.SetActive(true);
                         GameObject.Find("BtnCard").SetActive(false);

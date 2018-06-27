@@ -13,11 +13,14 @@ public class Manager : MonoBehaviour
     public GameObject goalText;
     public GameObject resultGoalText;
     public GameObject resultGoalPanel;
+    GameObject objBox;
+    GameObject objFireExt;
     public static GameObject o;
     public static Manager mgr;
     public Color currentSlotColor;
     public static bool isPlaying = false;
-    public int missionNum;
+
+
     public GameObject[] slots;
     public GameObject[] missionMaps;
     // Use this for initialization
@@ -29,7 +32,7 @@ public class Manager : MonoBehaviour
                 Mathf.Max(
                      defaultValue,
                      (int)(defaultValue * Screen.dpi / 160f));
-        reset();
+        resetMission();
         o = this.gameObject;
         mgr = GetComponent<Manager>();
 
@@ -40,12 +43,18 @@ public class Manager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape)) { SceneManager.LoadScene(0); }
     }
-
-    public void resetSlots()
+    public void resetMission()
     {
         Constant.selectedCardIds.Clear();
         Constant.repeatList.Clear();
         Constant.currentSlotId = 0;
+        resetSlots();
+        reset();
+    }
+
+    public void resetSlots()
+    {
+
         foreach (GameObject slot in slots)
         {
             slot.GetComponent<Slot>().reMoveCard();
@@ -70,6 +79,10 @@ public class Manager : MonoBehaviour
     }
     public void reset()
     {
+        Constant.isGetBox = false;
+        Constant.isGetFireExt = false;
+        Constant.height = 0;
+        Constant.isFlying = false;
         foreach (GameObject slot in slots)
         {
             slot.GetComponent<Image>().color = new Color(1, 1, 1);
@@ -78,10 +91,10 @@ public class Manager : MonoBehaviour
         {
             try { missionMap.SetActive(false); } catch (Exception E) { }
         }
-        missionMaps[missionNum].SetActive(true);
         resultGoalPanel.SetActive(false);
-        goalText.GetComponent<Text>().text = Constant.goals[missionNum];
-        resultGoalText.GetComponent<Text>().text = Constant.goals[missionNum];
+        missionMaps[Constant.missionNum].SetActive(true);
+        goalText.GetComponent<Text>().text = Constant.goals[Constant.missionNum];
+        resultGoalText.GetComponent<Text>().text = Constant.goals[Constant.missionNum];
         Manager.isPlaying = false;
         playBtn.GetComponent<PlayBtn>().setPlayBtn();
         //Constant.selectedCardIds.Clear();
@@ -91,11 +104,11 @@ public class Manager : MonoBehaviour
 
     public void checkMission()
     {
-        switch (missionNum)
+        switch (Constant.missionNum)
         {
             case 0:
                 if (Constant.selectedCardIds.Contains(Constant.cardUp))
-                    if (Constant.selectedCardIds.Contains(Constant.cardDown))
+                    if (!Constant.isFlying)
                         goalSuccess();
                     else
                         goalFail();
@@ -107,7 +120,7 @@ public class Manager : MonoBehaviour
         }
     }
 
-    private void goalFail()
+    public void goalFail()
     {
         reset();
     }
@@ -116,6 +129,7 @@ public class Manager : MonoBehaviour
     {
         isPlaying = false;
         resultGoalPanel.SetActive(true);
-        resetSlots();
     }
+
+
 }

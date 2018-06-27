@@ -6,6 +6,8 @@ TagManager:
   tags:
   - enemy
   - goal
+  - box
+  - fireext
   layers:
   - Default
   - TransparentFX

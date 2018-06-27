@@ -15,9 +15,8 @@ public class NextBtn : MonoBehaviour {
 	}
 
     public void nextLevel() {
-        Manager.mgr.missionNum+=1;
-        Manager.mgr.resetSlots();
-        Manager.mgr.reset();
+        Constant.missionNum+=1;
+        Manager.mgr.resetMission();
     }
 
 }

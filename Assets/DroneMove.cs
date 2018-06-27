@@ -17,6 +17,7 @@ public class DroneMove : MonoBehaviour
     float movingTime = 1.0f;
     private Vector3 startingPos;
     private Quaternion startingRot;
+    public GameObject box, fireExtuingisher;
     // Use this for initialization
     void Start()
     {
@@ -31,6 +32,8 @@ public class DroneMove : MonoBehaviour
     public void resetDrone()
     {
         iTween.Stop();
+        fireExtuingisher.SetActive(false);
+        box.SetActive(false);
         transform.localPosition = startingPos;
         transform.localRotation = startingRot;
     }
@@ -51,11 +54,13 @@ public class DroneMove : MonoBehaviour
             Manager.mgr.currentSlot(i);
             for (int j = 0; j < Constant.repeatList[i]; j++)
             {
+                if (!Manager.isPlaying)
+                    break;
                 controlDrone(Constant.selectedCardIds[i]);
                 yield return new WaitForSeconds(1.2f);
             }
         }
-        if (Manager.mgr.missionNum == 0)
+        if (Constant.missionNum == 0)
             Manager.mgr.checkMission();
     }
 
@@ -76,35 +81,73 @@ public class DroneMove : MonoBehaviour
 
     private void controlDrone(int cardId)
     {
-        switch (cardId)
+        if (!Constant.isFlying)
         {
-            case 0:
-                iTween.MoveBy(gameObject, iTween.Hash("y", 4, "time", movingTime));
-                break;
-            case 1:
-                iTween.MoveBy(gameObject, iTween.Hash("y", -4, "time", movingTime));
-                break;
-            case 2:
-                iTween.MoveBy(gameObject, iTween.Hash("x", 4, "time", movingTime));
-                break;
-            case 3:
-                iTween.RotateBy(gameObject, iTween.Hash("y", -0.25, "time", movingTime));
-                break;
-            case 4:
-                iTween.RotateBy(gameObject, iTween.Hash("y", 0.25, "time", movingTime));
-                break;
-            case 5:
-                break;
+            if (cardId == 0)
+            {
+                iTween.MoveBy(gameObject, iTween.Hash("y", 1, "time", movingTime));
+                Constant.height = 1;
+                Constant.isFlying = true;
+            }
+            else
+                Manager.mgr.goalFail();
+        }
+        else
+        {
+            switch (cardId)
+            {
+                case 0:
+                    Constant.height++;
+                    iTween.MoveBy(gameObject, iTween.Hash("y", 3, "time", movingTime));
+                    break;
+                case 1:
+                    if (Constant.height == 1)
+                    {
+                        iTween.MoveBy(gameObject, iTween.Hash("y", -1, "time", movingTime));
+                        Constant.isFlying = false;
+                    }
+                    else
+                    {
+                        iTween.MoveBy(gameObject, iTween.Hash("y", -3, "time", movingTime));
+                    }
+                    Constant.height--;
+                    break;
+                case 2:
+                    iTween.MoveBy(gameObject, iTween.Hash("x", 4, "time", movingTime));
+                    break;
+                case 3:
+                    iTween.RotateBy(gameObject, iTween.Hash("y", -0.25, "time", movingTime));
+                    break;
+                case 4:
+                    iTween.RotateBy(gameObject, iTween.Hash("y", 0.25, "time", movingTime));
+                    break;
+                case 5:
+                    break;
 
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "enemy")
-            Manager.mgr.reset();
+        if (Manager.isPlaying)
+        {
+            if (other.tag == "enemy")
+                Manager.mgr.reset();
 
-        if (other.tag == "goal")
-            Manager.mgr.checkMission();
+            if (other.tag == "goal")
+                Manager.mgr.checkMission();
+
+            if (other.tag == "box")
+            {
+                box.SetActive(true);
+                GameObject.Find("Box").SetActive(false);
+            }
+            if (other.tag == "fireext")
+            {
+                fireExtuingisher.SetActive(true);
+                GameObject.Find("FireExt").SetActive(false);
+            }
+        }
     }
 }

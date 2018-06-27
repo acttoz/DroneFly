@@ -11,6 +11,7 @@ public class Propeller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(Constant.isFlying)
         transform.Rotate(0, 0, 50);
     }
 }

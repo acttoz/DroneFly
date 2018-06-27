@@ -15,18 +15,6 @@ EditorBuildSettings:
     path: Assets/menu_stage.unity
     guid: 5473d26fe9b44c34c9b03eb57c4fc0a5
   - enabled: 1
-    path: Assets/mission1.unity
+    path: Assets/mission.unity
     guid: 8835e73a6e3e244ec8c45b515cdb8ff9
-  - enabled: 1
-    path: Assets/menu_study1.unity
-    guid: f3f88030b0589534d87414f2b3cb3b19
-  - enabled: 1
-    path: Assets/menu_study2.unity
-    guid: 61aa084a012297e46b49552a878a9bb6
-  - enabled: 1
-    path: Assets/menu_study3.unity
-    guid: 8297d53ec6c8405439abc9701e85741d
-  - enabled: 1
-    path: Assets/mission2.unity
-    guid: 3af124a9e8bd9104faa28dd3cf6b687a
   m_configObjects: {}
