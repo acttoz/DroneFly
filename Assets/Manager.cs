@@ -13,8 +13,8 @@ public class Manager : MonoBehaviour
     public GameObject goalText;
     public GameObject resultGoalText;
     public GameObject resultGoalPanel;
-    GameObject objBox;
-    GameObject objFireExt;
+    public GameObject objBox;
+    public GameObject objFireExt;
     public static GameObject o;
     public static Manager mgr;
     public Color currentSlotColor;
@@ -91,8 +91,26 @@ public class Manager : MonoBehaviour
         {
             try { missionMap.SetActive(false); } catch (Exception E) { }
         }
+      
+
         resultGoalPanel.SetActive(false);
+
+
         missionMaps[Constant.missionNum].SetActive(true);
+        if (Constant.missionNum < 5)
+        {
+
+        }
+        else if (Constant.missionNum > 4 && Constant.missionNum < 10)
+        {
+            Destroy(GameObject.FindGameObjectWithTag("box"));
+            Instantiate(objBox, new Vector3(0, 0, 0), Quaternion.identity, GameObject.Find("BoxPosition").transform);
+            //GameObject.FindGameObjectWithTag("box").transform.localPosition = new Vector3(0, 0, 0);
+        }
+        else
+        {
+        }
+
         goalText.GetComponent<Text>().text = Constant.goals[Constant.missionNum];
         resultGoalText.GetComponent<Text>().text = Constant.goals[Constant.missionNum];
         Manager.isPlaying = false;

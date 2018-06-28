@@ -17,7 +17,6 @@ public class DroneMove : MonoBehaviour
     float movingTime = 1.0f;
     private Vector3 startingPos;
     private Quaternion startingRot;
-    public GameObject box, fireExtuingisher;
     // Use this for initialization
     void Start()
     {
@@ -32,10 +31,9 @@ public class DroneMove : MonoBehaviour
     public void resetDrone()
     {
         iTween.Stop();
-        fireExtuingisher.SetActive(false);
-        box.SetActive(false);
         transform.localPosition = startingPos;
         transform.localRotation = startingRot;
+        
     }
 
     // Update is called once per frame
@@ -85,7 +83,7 @@ public class DroneMove : MonoBehaviour
         {
             if (cardId == 0)
             {
-                iTween.MoveBy(gameObject, iTween.Hash("y", 1, "time", movingTime));
+                iTween.MoveBy(gameObject, iTween.Hash("y",1.5, "time", movingTime));
                 Constant.height = 1;
                 Constant.isFlying = true;
             }
@@ -98,17 +96,17 @@ public class DroneMove : MonoBehaviour
             {
                 case 0:
                     Constant.height++;
-                    iTween.MoveBy(gameObject, iTween.Hash("y", 3, "time", movingTime));
+                    iTween.MoveBy(gameObject, iTween.Hash("y", 2, "time", movingTime));
                     break;
                 case 1:
                     if (Constant.height == 1)
                     {
-                        iTween.MoveBy(gameObject, iTween.Hash("y", -1, "time", movingTime));
+                        iTween.MoveBy(gameObject, iTween.Hash("y", -1.5, "time", movingTime));
                         Constant.isFlying = false;
                     }
                     else
                     {
-                        iTween.MoveBy(gameObject, iTween.Hash("y", -3, "time", movingTime));
+                        iTween.MoveBy(gameObject, iTween.Hash("y", -2, "time", movingTime));
                     }
                     Constant.height--;
                     break;
@@ -121,7 +119,8 @@ public class DroneMove : MonoBehaviour
                 case 4:
                     iTween.RotateBy(gameObject, iTween.Hash("y", 0.25, "time", movingTime));
                     break;
-                case 5:
+                case 6:
+                    GameObject.FindGameObjectWithTag("box").GetComponent<Rigidbody>().useGravity = true;
                     break;
 
             }
@@ -140,13 +139,12 @@ public class DroneMove : MonoBehaviour
 
             if (other.tag == "box")
             {
-                box.SetActive(true);
-                GameObject.Find("Box").SetActive(false);
+                Constant.isGetBox = true;
+                other.transform.SetParent(gameObject.transform.GetChild(0));
             }
             if (other.tag == "fireext")
             {
-                fireExtuingisher.SetActive(true);
-                GameObject.Find("FireExt").SetActive(false);
+                other.transform.SetParent(gameObject.transform);
             }
         }
     }
