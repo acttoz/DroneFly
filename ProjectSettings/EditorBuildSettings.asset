@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/mission.unity
     guid: 8835e73a6e3e244ec8c45b515cdb8ff9
+  - enabled: 1
+    path: Assets/menu_study.unity
+    guid: f3f88030b0589534d87414f2b3cb3b19
   m_configObjects: {}

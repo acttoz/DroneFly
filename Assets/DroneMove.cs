@@ -14,7 +14,8 @@ using UnityEngine;
 
 public class DroneMove : MonoBehaviour
 {
-    float movingTime = 1.0f;
+    float movingTime = 0.2f;
+    float waitTime;
     private Vector3 startingPos;
     private Quaternion startingRot;
     // Use this for initialization
@@ -22,6 +23,7 @@ public class DroneMove : MonoBehaviour
     {
         startingPos = transform.localPosition;
         startingRot = transform.localRotation;
+        waitTime = movingTime + 0.1f;
     }
     public void play()
     {
@@ -33,7 +35,7 @@ public class DroneMove : MonoBehaviour
         iTween.Stop();
         transform.localPosition = startingPos;
         transform.localRotation = startingRot;
-        
+
     }
 
     // Update is called once per frame
@@ -55,7 +57,7 @@ public class DroneMove : MonoBehaviour
                 if (!Manager.isPlaying)
                     break;
                 controlDrone(Constant.selectedCardIds[i]);
-                yield return new WaitForSeconds(1.2f);
+                yield return new WaitForSeconds(waitTime);
             }
         }
         if (Constant.missionNum == 0)
@@ -79,11 +81,12 @@ public class DroneMove : MonoBehaviour
 
     private void controlDrone(int cardId)
     {
+        Constant.currentCardId = cardId;
         if (!Constant.isFlying)
         {
             if (cardId == 0)
             {
-                iTween.MoveBy(gameObject, iTween.Hash("y",1.5, "time", movingTime));
+                iTween.MoveBy(gameObject, iTween.Hash("y", 1.5, "time", movingTime));
                 Constant.height = 1;
                 Constant.isFlying = true;
             }
@@ -120,8 +123,9 @@ public class DroneMove : MonoBehaviour
                     iTween.RotateBy(gameObject, iTween.Hash("y", 0.25, "time", movingTime));
                     break;
                 case 6:
-                    GameObject.FindGameObjectWithTag("box").GetComponent<Rigidbody>().useGravity = true;
+                    GameObject.FindGameObjectWithTag("box").AddComponent<Rigidbody>();
                     break;
+
 
             }
         }
@@ -132,15 +136,24 @@ public class DroneMove : MonoBehaviour
         if (Manager.isPlaying)
         {
             if (other.tag == "enemy")
-                Manager.mgr.reset();
+                Manager.mgr.goalFail();
 
             if (other.tag == "goal")
+            {
                 Manager.mgr.checkMission();
+            }
 
             if (other.tag == "box")
             {
-                Constant.isGetBox = true;
-                other.transform.SetParent(gameObject.transform.GetChild(0));
+                if (Constant.currentCardId != 1) {
+                    Manager.mgr.goalFail();
+                }else if (!Constant.isGetBox)
+                {
+                    Constant.isGetBox = true;
+                    other.transform.SetParent(gameObject.transform.GetChild(0));
+                    if (Constant.missionNum == 5)
+                        Manager.mgr.checkMission();
+                }
             }
             if (other.tag == "fireext")
             {

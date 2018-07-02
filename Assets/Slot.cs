@@ -29,7 +29,7 @@ public class Slot : MonoBehaviour
             else {
                 transform.GetChild(1).gameObject.SetActive(false);
             }
-        } catch (Exception E) { }
+        } catch (Exception E) {  }
         
 
         if (Constant.currentSlotId > slotId)

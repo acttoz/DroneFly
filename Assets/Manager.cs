@@ -79,6 +79,7 @@ public class Manager : MonoBehaviour
     }
     public void reset()
     {
+        Constant.isClearSubMission = false;
         Constant.isGetBox = false;
         Constant.isGetFireExt = false;
         Constant.height = 0;
@@ -91,7 +92,7 @@ public class Manager : MonoBehaviour
         {
             try { missionMap.SetActive(false); } catch (Exception E) { }
         }
-      
+
 
         resultGoalPanel.SetActive(false);
 
@@ -104,7 +105,9 @@ public class Manager : MonoBehaviour
         else if (Constant.missionNum > 4 && Constant.missionNum < 10)
         {
             Destroy(GameObject.FindGameObjectWithTag("box"));
-            Instantiate(objBox, new Vector3(0, 0, 0), Quaternion.identity, GameObject.Find("BoxPosition").transform);
+            GameObject tempobj = Instantiate(objBox, new Vector3(0, 0, 0), Quaternion.Euler(new Vector3(-90, 0, -9)), GameObject.Find("BoxPosition").transform) as GameObject;
+            tempobj.transform.localPosition = new Vector3(0, 0, 0);
+            tempobj.transform.localRotation = Quaternion.Euler(-90, 0, -9);
             //GameObject.FindGameObjectWithTag("box").transform.localPosition = new Vector3(0, 0, 0);
         }
         else
@@ -130,6 +133,27 @@ public class Manager : MonoBehaviour
                         goalSuccess();
                     else
                         goalFail();
+                break;
+            case 5:
+                if (Constant.currentCardId == 1)
+                    goalSuccess();
+                else
+                    goalFail();
+                break;
+            case 6:
+                if (Constant.currentCardId == 1)
+                {
+                    if (Constant.isGetBox)
+                        goalSuccess();
+                }
+                else
+                {
+                    goalFail();
+                }
+                break;
+            case 7:
+                if (Constant.isClearSubMission)
+                    goalSuccess();
                 break;
 
             default:

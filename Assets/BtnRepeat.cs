@@ -23,7 +23,9 @@ public class BtnRepeat : MonoBehaviour
         try {
         Constant.repeatList.RemoveAt(Constant.currentSlotId);
         }
-        catch (System.Exception E) {
+        catch (System.Exception E)
+        {
+            Debug.Log(E.ToString());
         }
         Constant.repeatList.Insert(Constant.currentSlotId, Constant.repeatNum);
 
