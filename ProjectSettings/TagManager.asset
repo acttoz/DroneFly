@@ -8,6 +8,9 @@ TagManager:
   - goal
   - box
   - fireext
+  - goal_sub
+  - FxTemporaire
+  - water
   layers:
   - Default
   - TransparentFX

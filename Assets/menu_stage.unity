@@ -945,7 +945,7 @@ Prefab:
     - target: {fileID: 114053372253099244, guid: 800ffab7d44556545abf64db1560a1aa,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 13
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 800ffab7d44556545abf64db1560a1aa, type: 2}
@@ -1792,7 +1792,7 @@ Prefab:
     - target: {fileID: 114053372253099244, guid: 800ffab7d44556545abf64db1560a1aa,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 800ffab7d44556545abf64db1560a1aa, type: 2}
@@ -1941,7 +1941,7 @@ Prefab:
     - target: {fileID: 114053372253099244, guid: 800ffab7d44556545abf64db1560a1aa,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 800ffab7d44556545abf64db1560a1aa, type: 2}
@@ -2090,7 +2090,7 @@ Prefab:
     - target: {fileID: 114053372253099244, guid: 800ffab7d44556545abf64db1560a1aa,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 800ffab7d44556545abf64db1560a1aa, type: 2}
@@ -2460,6 +2460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1565a12dc402e499d1fc81e0c5e502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  belowHouse: {fileID: 0}
 --- !u!1001 &1685187411
 Prefab:
   m_ObjectHideFlags: 0
@@ -2875,6 +2876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce542e73838437d4c9c130a09aa4efc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  publicLevelnum: 0
   selectedCardpublic: 
 --- !u!114 &1878161365
 MonoBehaviour:
@@ -2891,8 +2893,14 @@ MonoBehaviour:
   playBtn: {fileID: 0}
   goalText: {fileID: 0}
   resultGoalText: {fileID: 0}
+  resultGoalText2: {fileID: 0}
   resultGoalPanel: {fileID: 0}
+  failGoalPanel: {fileID: 0}
+  objBox: {fileID: 0}
+  objWater: {fileID: 0}
   currentSlotColor: {r: 0, g: 0, b: 0, a: 0}
+  fire1: {fileID: 0}
+  fire2: {fileID: 0}
   slots:
   - {fileID: 0}
   - {fileID: 0}
@@ -3376,7 +3384,7 @@ Prefab:
     - target: {fileID: 114053372253099244, guid: 800ffab7d44556545abf64db1560a1aa,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 800ffab7d44556545abf64db1560a1aa, type: 2}
@@ -3525,7 +3533,7 @@ Prefab:
     - target: {fileID: 114053372253099244, guid: 800ffab7d44556545abf64db1560a1aa,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 800ffab7d44556545abf64db1560a1aa, type: 2}
@@ -3782,7 +3790,7 @@ Prefab:
     - target: {fileID: 114053372253099244, guid: 800ffab7d44556545abf64db1560a1aa,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 11
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 800ffab7d44556545abf64db1560a1aa, type: 2}

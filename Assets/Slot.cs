@@ -51,7 +51,7 @@ public class Slot : MonoBehaviour
     void onClick()
     {
         Manager.mgr.resetSlots();
-        if (Constant.currentSlotId > slotId)
+        if (Constant.currentSlotId > slotId && !Manager.isPlaying)
         {
             Constant.currentSlotId--;
             Constant.selectedCardIds.RemoveAt(slotId);

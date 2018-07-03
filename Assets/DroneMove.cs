@@ -18,6 +18,7 @@ public class DroneMove : MonoBehaviour
     float waitTime;
     private Vector3 startingPos;
     private Quaternion startingRot;
+    public GameObject belowHouse;
     // Use this for initialization
     void Start()
     {
@@ -56,6 +57,19 @@ public class DroneMove : MonoBehaviour
             {
                 if (!Manager.isPlaying)
                     break;
+
+                if (Constant.selectedCardIds[i] == 6 && Constant.isGetWater)
+                {
+                    controlDrone(6);
+                    yield return new WaitForSeconds(3);
+                    Destroy(transform.GetChild(0).GetChild(0).gameObject);
+                    Constant.isGetWater = false;
+                    if (belowHouse != null)
+                        belowHouse.transform.GetChild(0).gameObject.SetActive(false);
+                    yield return new WaitForSeconds(1);
+                    Manager.mgr.checkMission();
+                    break;
+                }
                 controlDrone(Constant.selectedCardIds[i]);
                 yield return new WaitForSeconds(waitTime);
             }
@@ -99,7 +113,8 @@ public class DroneMove : MonoBehaviour
             {
                 case 0:
                     Constant.height++;
-                    iTween.MoveBy(gameObject, iTween.Hash("y", 2, "time", movingTime));
+                    if(Constant.height<4)
+                    iTween.MoveBy(gameObject, iTween.Hash("y", 3, "time", movingTime));
                     break;
                 case 1:
                     if (Constant.height == 1)
@@ -109,7 +124,7 @@ public class DroneMove : MonoBehaviour
                     }
                     else
                     {
-                        iTween.MoveBy(gameObject, iTween.Hash("y", -2, "time", movingTime));
+                        iTween.MoveBy(gameObject, iTween.Hash("y", -3, "time", movingTime));
                     }
                     Constant.height--;
                     break;
@@ -123,7 +138,7 @@ public class DroneMove : MonoBehaviour
                     iTween.RotateBy(gameObject, iTween.Hash("y", 0.25, "time", movingTime));
                     break;
                 case 6:
-                    GameObject.FindGameObjectWithTag("box").AddComponent<Rigidbody>();
+                    transform.GetChild(0).GetChild(0).GetComponent<Animation>().Play();
                     break;
 
 
@@ -135,19 +150,28 @@ public class DroneMove : MonoBehaviour
     {
         if (Manager.isPlaying)
         {
-            if (other.tag == "enemy")
+            if (other.tag == "enemy") {
                 Manager.mgr.goalFail();
+                Debug.Log("fail");
+            }
 
             if (other.tag == "goal")
             {
                 Manager.mgr.checkMission();
             }
 
+            if (other.tag == "goal_sub")
+            {
+
+            }
+
             if (other.tag == "box")
             {
-                if (Constant.currentCardId != 1) {
+                if (Constant.currentCardId != 1)
+                {
                     Manager.mgr.goalFail();
-                }else if (!Constant.isGetBox)
+                }
+                else if (!Constant.isGetBox)
                 {
                     Constant.isGetBox = true;
                     other.transform.SetParent(gameObject.transform.GetChild(0));
@@ -155,10 +179,27 @@ public class DroneMove : MonoBehaviour
                         Manager.mgr.checkMission();
                 }
             }
+
+            if (other.tag == "water")
+            {
+                if (Constant.currentCardId != 1)
+                {
+                    Manager.mgr.goalFail();
+                }
+                else if (!Constant.isGetWater)
+                {
+                    Constant.isGetWater = true;
+                    other.transform.SetParent(gameObject.transform.GetChild(0));
+                }
+            }
+
             if (other.tag == "fireext")
             {
                 other.transform.SetParent(gameObject.transform);
             }
         }
+    }
+    public void setBelowHouse(GameObject temp) {
+        belowHouse = temp;
     }
 }
