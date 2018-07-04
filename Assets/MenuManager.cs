@@ -8,8 +8,9 @@ public class MenuManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Constant.missionNum = 0;
-        activatePanel(0);
-	}
+        resetPanels();
+        Panels[0].SetActive(true);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -25,5 +26,6 @@ public class MenuManager : MonoBehaviour {
     public void activatePanel(int i) {
         resetPanels();
         Panels[i].SetActive(true);
+        GetComponent<AudioSource>().Play();
     }
 }

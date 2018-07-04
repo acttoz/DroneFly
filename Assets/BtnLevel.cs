@@ -18,6 +18,7 @@ public class BtnLevel : MonoBehaviour
 
     private void onClik()
     {
+        GetComponent<AudioSource>().Play();
         SceneManager.LoadScene(levelNum);
     }
 

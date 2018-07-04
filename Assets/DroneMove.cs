@@ -19,12 +19,15 @@ public class DroneMove : MonoBehaviour
     private Vector3 startingPos;
     private Quaternion startingRot;
     public GameObject belowHouse;
+    private AudioSource droneSound;
+    public AudioClip audioWaterfall;
     // Use this for initialization
     void Start()
     {
         startingPos = transform.localPosition;
         startingRot = transform.localRotation;
         waitTime = movingTime + 0.1f;
+        droneSound = GetComponent<AudioSource>();
     }
     public void play()
     {
@@ -36,7 +39,7 @@ public class DroneMove : MonoBehaviour
         iTween.Stop();
         transform.localPosition = startingPos;
         transform.localRotation = startingRot;
-
+        droneSound.Stop();
     }
 
     // Update is called once per frame
@@ -96,16 +99,15 @@ public class DroneMove : MonoBehaviour
     private void controlDrone(int cardId)
     {
         Constant.currentCardId = cardId;
-        if (!Constant.isFlying)
+        if (Constant.height < 1)
         {
             if (cardId == 0)
             {
+                droneSound.Play();
                 iTween.MoveBy(gameObject, iTween.Hash("y", 1.5, "time", movingTime));
                 Constant.height = 1;
                 Constant.isFlying = true;
             }
-            else
-                Manager.mgr.goalFail();
         }
         else
         {
@@ -113,12 +115,13 @@ public class DroneMove : MonoBehaviour
             {
                 case 0:
                     Constant.height++;
-                    if(Constant.height<4)
-                    iTween.MoveBy(gameObject, iTween.Hash("y", 3, "time", movingTime));
+                    if (Constant.height < 4)
+                        iTween.MoveBy(gameObject, iTween.Hash("y", 3, "time", movingTime));
                     break;
                 case 1:
                     if (Constant.height == 1)
                     {
+                        droneSound.Stop();
                         iTween.MoveBy(gameObject, iTween.Hash("y", -1.5, "time", movingTime));
                         Constant.isFlying = false;
                     }
@@ -150,7 +153,8 @@ public class DroneMove : MonoBehaviour
     {
         if (Manager.isPlaying)
         {
-            if (other.tag == "enemy") {
+            if (other.tag == "enemy")
+            {
                 Manager.mgr.goalFail();
                 Debug.Log("fail");
             }
@@ -199,7 +203,8 @@ public class DroneMove : MonoBehaviour
             }
         }
     }
-    public void setBelowHouse(GameObject temp) {
+    public void setBelowHouse(GameObject temp)
+    {
         belowHouse = temp;
     }
 }

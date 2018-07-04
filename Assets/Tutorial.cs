@@ -12,7 +12,6 @@ public class Tutorial : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -22,6 +21,8 @@ public class Tutorial : MonoBehaviour
     }
     public void tutorial(int order)
     {
+        GetComponent<AudioSource>().Play();
+
         switch (order)
         {
             case 0:
@@ -29,22 +30,17 @@ public class Tutorial : MonoBehaviour
                 switch (i)
                 {
                     case 1:
-                        Constant.selectedCardIds.Add(2);
+                        Constant.selectedCardIds.Add(0);
                         Constant.currentSlotId++;
                         break;
                     case 2:
-                        Constant.selectedCardIds.Add(2);
-                        Constant.currentSlotId++;
-                        break;
-                    case 3:
-                        Constant.selectedCardIds.Add(2);
+                        Constant.selectedCardIds.Add(0);
                         Constant.currentSlotId++;
                         obj1.SetActive(false);
                         obj2.SetActive(true);
                         GameObject.Find("BtnCard").SetActive(false);
                         break;
                 }
-
                 break;
             case 1:
                 drone.SendMessage("moveTutorial");

@@ -40,6 +40,7 @@ public class Constant : MonoBehaviour
         selectedCardIds = new List<int>();
         selectedCardpublic = new List<int>();
         repeatList = new List<int>();
+        
     }
 
     // Update is called once per frame

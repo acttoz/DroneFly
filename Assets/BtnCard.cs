@@ -18,6 +18,7 @@ public class BtnCard : MonoBehaviour
 
     private void onClick()
     {
+        GetComponent<AudioSource>().Play();
         if (!Manager.isPlaying)
         {
             Constant.selectedCardIds.Add(idCard);

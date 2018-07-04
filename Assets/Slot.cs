@@ -46,10 +46,10 @@ public class Slot : MonoBehaviour
         string slotText = Constant.cardTexts[cardId];
         gameObject.transform.GetChild(0).GetComponent<UnityEngine.UI.Text>().text = slotText;
         GetComponent<Image>().sprite = cardColor;
-
     }
     void onClick()
     {
+        GetComponent<AudioSource>().Play();
         Manager.mgr.resetSlots();
         if (Constant.currentSlotId > slotId && !Manager.isPlaying)
         {
@@ -57,7 +57,6 @@ public class Slot : MonoBehaviour
             Constant.selectedCardIds.RemoveAt(slotId);
             Constant.repeatList.RemoveAt(slotId);
         }
-        
     }
 
     public void reMoveCard()

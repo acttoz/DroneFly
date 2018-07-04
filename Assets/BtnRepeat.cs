@@ -19,6 +19,7 @@ public class BtnRepeat : MonoBehaviour
     }
     public void addRepeat()
     {
+        GetComponent<AudioSource>().Play();
         Constant.repeatNum++;
         try {
         Constant.repeatList.RemoveAt(Constant.currentSlotId);

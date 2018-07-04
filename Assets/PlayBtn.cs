@@ -19,6 +19,7 @@ public class PlayBtn : MonoBehaviour
     }
     void onClick()
     {
+        GetComponent<AudioSource>().Play();
         if (Manager.isPlaying)
         {
             Manager.mgr.reset();

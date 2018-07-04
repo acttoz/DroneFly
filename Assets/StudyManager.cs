@@ -59,6 +59,8 @@ public class StudyManager : MonoBehaviour
     }
 
     public void nextImage() {
+        GetComponent<AudioSource>().Play();
+
         if ((currentPage + 1) < allPage) {
             currentPage++;
             setPage();
@@ -66,6 +68,8 @@ public class StudyManager : MonoBehaviour
     }
     public void prevImage()
     {
+        GetComponent<AudioSource>().Play();
+
         if ((currentPage) > 0)
         {
             currentPage--;

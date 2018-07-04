@@ -30,6 +30,7 @@ public class Manager : MonoBehaviour
     void Start()
     {
 
+
         int defaultValue = EventSystem.current.pixelDragThreshold;
         EventSystem.current.pixelDragThreshold =
                 Mathf.Max(
@@ -38,7 +39,6 @@ public class Manager : MonoBehaviour
         resetMission();
         o = this.gameObject;
         mgr = GetComponent<Manager>();
-
     }
 
     // Update is called once per frame
@@ -276,6 +276,7 @@ public class Manager : MonoBehaviour
     private IEnumerator waitGoal()
     {
         yield return new WaitForSeconds(0.5f);
+        resultGoalPanel.transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "메인 메뉴";
         resultGoalPanel.SetActive(true);
     }
 
