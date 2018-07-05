@@ -44,7 +44,7 @@ public class Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) { SceneManager.LoadScene(0); }
+        
     }
     public void resetMission()
     {
@@ -276,7 +276,8 @@ public class Manager : MonoBehaviour
     private IEnumerator waitGoal()
     {
         yield return new WaitForSeconds(0.5f);
-        resultGoalPanel.transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "메인 메뉴";
+        if (Constant.missionNum == 14)
+            resultGoalPanel.transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "메인 메뉴";
         resultGoalPanel.SetActive(true);
     }
 

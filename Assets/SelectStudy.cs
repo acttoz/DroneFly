@@ -18,6 +18,7 @@ public class SelectStudy : MonoBehaviour
 
     public void selectStudy(int i)
     {
+        Constant.previousScene = Constant.SCENE_STUDY;
         Constant.studyNum = i;
         SceneManager.LoadScene(4);
         GetComponent<AudioSource>().Play();

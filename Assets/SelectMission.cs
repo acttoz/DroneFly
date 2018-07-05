@@ -13,6 +13,7 @@ public class SelectMission : MonoBehaviour {
 	}
     public void goToMission(int mission)
     {
+        Constant.previousScene = Constant.SCENE_STAGE;
         Constant.missionNum = mission;
         UnityEngine.SceneManagement.SceneManager.LoadScene(3);
         GetComponent<AudioSource>().Play();

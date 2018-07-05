@@ -4,12 +4,28 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour {
     public GameObject[] Panels;
+    public int currentPanel;
 
 	// Use this for initialization
 	void Start () {
         Constant.missionNum = 0;
         resetPanels();
-        Panels[0].SetActive(true);
+        switch (Constant.previousScene) {
+            case Constant.SCENE_GAME:
+                currentPanel = 1;
+                Panels[1].SetActive(true);
+                break;
+            case Constant.SCENE_STUDY:
+                currentPanel = 2;
+                Panels[2].SetActive(true);
+                break;
+            default:
+                currentPanel = 0;
+                Panels[0].SetActive(true);
+                break;
+
+        }
+        
     }
 	
 	// Update is called once per frame
@@ -24,6 +40,7 @@ public class MenuManager : MonoBehaviour {
     }
 
     public void activatePanel(int i) {
+        currentPanel = i;
         resetPanels();
         Panels[i].SetActive(true);
         GetComponent<AudioSource>().Play();

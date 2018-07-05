@@ -113,6 +113,46 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &29868502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 29868504}
+  - component: {fileID: 29868503}
+  m_Layer: 0
+  m_Name: BackButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &29868503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 29868502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99632cc758238cd40a7c4d11cb4bb3df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &29868504
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 29868502}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1189.4598, y: 1066.1882, z: -15.084558}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &48972257
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,7 +264,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b12059c9341d34ea21f81170ff78ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pv: 0
   levelNum: 0
+  previousNum: 0
 --- !u!114 &86926842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,7 +401,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b12059c9341d34ea21f81170ff78ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pv: 0
   levelNum: 4
+  previousNum: 0
 --- !u!114 &156970802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1052,7 +1096,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b12059c9341d34ea21f81170ff78ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pv: 2
   levelNum: 2
+  previousNum: 0
 --- !u!82 &430266635
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1271,7 +1317,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b12059c9341d34ea21f81170ff78ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pv: 0
   levelNum: 0
+  previousNum: 0
 --- !u!114 &508609519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2250,7 +2298,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b12059c9341d34ea21f81170ff78ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pv: 0
   levelNum: 0
+  previousNum: 0
 --- !u!114 &988607518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2811,7 +2861,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b12059c9341d34ea21f81170ff78ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pv: 0
   levelNum: 0
+  previousNum: 0
 --- !u!114 &1236625259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3490,7 +3542,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b12059c9341d34ea21f81170ff78ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pv: 2
   levelNum: 1
+  previousNum: 0
 --- !u!82 &1437614764
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3759,7 +3813,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b12059c9341d34ea21f81170ff78ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pv: 0
   levelNum: 0
+  previousNum: 0
 --- !u!114 &1614354288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4043,7 +4099,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b12059c9341d34ea21f81170ff78ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pv: 2
   levelNum: 3
+  previousNum: 0
 --- !u!82 &1657577300
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4262,7 +4320,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b12059c9341d34ea21f81170ff78ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pv: 0
   levelNum: 0
+  previousNum: 0
 --- !u!114 &1719514494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4938,7 +4998,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b12059c9341d34ea21f81170ff78ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pv: 0
   levelNum: 0
+  previousNum: 0
 --- !u!114 &2062724236
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ using UnityEngine;
 
 public class DroneMove : MonoBehaviour
 {
-    float movingTime = 0.2f;
+    float movingTime = 1.0f;
     float waitTime;
     private Vector3 startingPos;
     private Quaternion startingRot;
